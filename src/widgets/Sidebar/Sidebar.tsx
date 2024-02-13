@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import LogoBig from "../../shared/assets/images/LogoBig.png";
 import LogoSmall from "../../shared/assets/images/LogoSmall.png";
 import Trophy from "../../shared/assets/icon/trophy.svg";
-import Exit from "../../shared/assets/icon/exit.svg";
+import Exit from "../../shared/assets/icon/Exit.svg";
 import { Calendar } from '../Icons/Calendar';
 import { Heart } from '../Icons/Heart';
 import { ProfileIcon } from '../Icons/ProfileIcon';
