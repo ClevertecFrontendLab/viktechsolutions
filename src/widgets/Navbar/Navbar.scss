@@ -1,0 +1,105 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+
+    .site-page-header {
+        background: var(--geekblue-light-1);
+        width: 100%;
+    }
+
+    .ant-page-header.has-breadcrumb {
+        padding-top: 16px;
+    }
+
+    .ant-page-header-heading-title {
+        font: var(--font-h1);
+        font-weight: 700;
+        overflow: hidden;
+        white-space: pre-wrap;
+        text-overflow: ellipsis;
+        margin: 0;
+        color: var(--title-light);
+        transition: font-size 0.2s ease-in-out;
+    }
+
+    .ant-page-header-heading-extra > * {
+        width: 129px;
+        height: 32px;
+    }
+
+    .ant-page-header-compact .ant-page-header-heading {
+        flex-wrap: nowrap;
+    }
+
+    &__setting {
+        position: relative;
+        right: 0;
+
+        .ant-btn {
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .ant-btn .anticon {
+            position: absolute;
+            right: 0;
+        }
+
+        &_-text {
+            font: var(--font-14);
+            font-weight: 400;
+            padding: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 950px) and (min-width: 835px) {
+    .navbar {
+        .ant-page-header-heading-title {
+            font: var(--font-h2);
+            font-weight: 700;
+        }
+    }
+}
+
+@media screen and (max-width: 834px) and (min-width: 361px) {
+    .navbar {
+        .ant-page-header-heading-title {
+            font: var(--font-h3);
+            font-weight: 500;
+        }
+
+        .anticon svg {
+            display: none;
+        }
+
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .navbar {
+        .ant-btn > .anticon + span {
+            visibility: hidden;
+        }
+
+        .ant-page-header-heading-extra > * {
+            width: 16px;
+            height: auto;
+        }
+
+        .navbar__setting .ant-btn .anticon {
+            display: inline-block;
+            height: 16px;
+            width: 16px;
+            left: 0;
+        }
+
+        .ant-page-header-heading-title {
+            font: var(--font-h4);
+            font-weight: 500;
+            max-width: 360px;
+        }
+    }
+}
