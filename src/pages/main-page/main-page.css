@@ -50,8 +50,9 @@
         white-space: normal;
     }
 
-    .svg {
+     .svg {
         margin-right: 6px;
+        fill: var(--geekblue-light-6);
     }
 
     .bottom {

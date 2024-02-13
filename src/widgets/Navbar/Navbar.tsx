@@ -16,9 +16,10 @@ export const Navbar = ({className}: NavbarProps) => {
   ];
 
   const textSetting = (
-    <div className="navbar__setting">
-      <Button type="text" className="navbar__setting-text"> <SettingOutlined/>Настройки</Button>
-    </div>
+            <Button type="text" className="navbar__setting-button">
+               <span className="navbar__setting-circle"><SettingOutlined /> </span>
+                <span className="navbar__setting-text">Настройки</span>
+            </Button>
   );
 
   const title =
@@ -26,15 +27,13 @@ export const Navbar = ({className}: NavbarProps) => {
       <span>Приветствуем тебя в CleverFit — приложении,<br/>которое поможет тебе добиться своей мечты! </span>);
 
   return (
-    <div className={className}>
-        <div className="navbar">
+    <div className={`navbar  ${className}`}>
             <PageHeader
                 title={title}
                 breadcrumb={{routes}}
                 className="site-page-header"
                 extra={textSetting}>
             </PageHeader>
-        </div>
     </div>
   );
 };

@@ -38,7 +38,7 @@ export const MainPage: React.FC = () => {
                 <Card className="card">
                     <div className="text">Назначить календарь</div>
                     <Divider/>
-                    <Button type="text" className="text bottom"><Calendar className="svg"/>Календарь</Button>
+                    <Button type="text" className="text bottom"><Calendar className="svg" />Календарь</Button>
                 </Card>
                 <Card className="card">
                     <div className="text">Заполнить профиль</div>
@@ -60,7 +60,7 @@ export const MainPage: React.FC = () => {
                                 <Button type="text" className="text bottom"><AndroidFilled
                                     className="svg"/>Android OS</Button>
                                 <Button type="text" className="text bottom"><AppleFilled
-                                    className="svg"/>Apple iOS</Button>
+                                    className="svg" />Apple iOS</Button>
                             </div>
                         </Card>
                     </div>

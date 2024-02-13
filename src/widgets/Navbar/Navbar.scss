@@ -27,27 +27,49 @@
         height: 32px;
     }
 
+    .ant-page-header-heading-extra {
+        margin: 0;
+    }
+
     .ant-page-header-compact .ant-page-header-heading {
         flex-wrap: nowrap;
     }
-
+    .ant-space {
+        justify-content: flex-end;
+        margin-right: -18px;
+    }
     &__setting {
         position: relative;
+        display: flex;
         right: 0;
+
+        &-circle {
+            margin-right: 10px;
+        }
+
+
 
         .ant-btn {
             position: relative;
             display: flex;
             justify-content: flex-end;
             width: 100%;
+            padding: 4px 0 4px 15px;
         }
+
 
         .ant-btn .anticon {
             position: absolute;
             right: 0;
         }
 
-        &_-text {
+        &-button {
+            display: flex;
+            align-items: center;
+
+        }
+
+        &-text {
             font: var(--font-14);
             font-weight: 400;
             padding: 0;
@@ -80,6 +102,27 @@
 
 @media screen and (max-width: 360px) {
     .navbar {
+        .ant-page-header-heading-extra {
+            margin: 0 24px 0 0;
+        }
+
+        &__setting {
+            &-circle {
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                background: #ffffff;
+                border: 1px solid var(--gray-5);
+                border-radius: 50%;
+                height: 32px;
+                width: 32px;
+            }
+
+            &-text {
+                visibility: hidden;
+            }
+        }
+
         .ant-btn > .anticon + span {
             visibility: hidden;
         }
@@ -87,10 +130,15 @@
         .ant-page-header-heading-extra > * {
             width: 16px;
             height: auto;
+
+        }
+
+        .ant-btn > span {
+            display: flex;
         }
 
         .navbar__setting .ant-btn .anticon {
-            display: inline-block;
+
             height: 16px;
             width: 16px;
             left: 0;
