@@ -34,10 +34,12 @@
     .ant-page-header-compact .ant-page-header-heading {
         flex-wrap: nowrap;
     }
+
     .ant-space {
         justify-content: flex-end;
         margin-right: -18px;
     }
+
     &__setting {
         position: relative;
         display: flex;
@@ -46,8 +48,6 @@
         &-circle {
             margin-right: 10px;
         }
-
-
 
         .ant-btn {
             position: relative;
@@ -106,6 +106,11 @@
             margin: 0 24px 0 0;
         }
 
+        .ant-space {
+            justify-content: flex-end;
+            margin-right: -18px;
+        }
+
         &__setting {
             &-circle {
                 display: flex;
@@ -135,10 +140,11 @@
 
         .ant-btn > span {
             display: flex;
+            position: absolute;
+            top: 0;
         }
 
         .navbar__setting .ant-btn .anticon {
-
             height: 16px;
             width: 16px;
             left: 0;
@@ -147,7 +153,7 @@
         .ant-page-header-heading-title {
             font: var(--font-h4);
             font-weight: 500;
-            max-width: 360px;
+            max-width: 280px;
         }
     }
 }

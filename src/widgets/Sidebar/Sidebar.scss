@@ -10,8 +10,6 @@
         margin-top: 36px;
     }
 
-
-
     &__links {
         display: flex;
         flex-direction: column;
@@ -95,7 +93,11 @@
         height: 100vh;
         z-index: 1000;
 
-        &__logo{
+        .anticon svg {
+            color: var(--gray-7);
+        }
+
+        &__logo {
             img {
                 height: 36px;
             }
@@ -103,20 +105,28 @@
     }
 
     .sidebar.collapsed {
-        width: auto;
+        width: 0;
+    }
+    .sidebar:not(.collapsed) .sidebar__toggle {
+        left: 275px;
+    }
+
+    .sidebar.collapsed .sidebar__toggle {
+        left: 106px;
     }
 
     .sidebar__toggle {
         position: fixed;
         top: 24px;
-        left: 105px;
         z-index: 1001;
-    }
 
-    .sidebar__toggle.collapsed {
+
+    }
+    .sidebar__toggle .collapsedBtn {
         width: 32px;
         height: 48px;
-        left: -31px;
+        right: 138px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .sidebar.collapsed .sidebar__links,
