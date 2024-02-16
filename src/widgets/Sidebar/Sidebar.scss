@@ -1,7 +1,15 @@
 .sidebar {
+    //width: 208px;
+    //background: #FFFFFF;
+    //position: relative;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
     width: 208px;
     background: #FFFFFF;
-    position: relative;
+    z-index: 1001;
 
     &__logo {
         display: flex;
@@ -30,7 +38,6 @@
     }
 
     &__toggle {
-
         .collapsedBtn {
             position: absolute !important;
             right: -20px;
@@ -92,6 +99,7 @@
         width: 106px;
         height: 100vh;
         z-index: 1000;
+        box-shadow: 2px 8px 8px rgba(0, 0, 0, 0.1);
 
         .anticon svg {
             color: var(--gray-7);
@@ -119,14 +127,19 @@
         position: fixed;
         top: 24px;
         z-index: 1001;
+        filter: drop-shadow(4px 3px 3px rgba(0, 0, 0, 0.2));
 
-
+        .ant-btn {
+            transition: none;
+            border-radius: 0;
+        }
     }
     .sidebar__toggle .collapsedBtn {
         width: 32px;
         height: 48px;
         right: 138px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+
     }
 
     .sidebar.collapsed .sidebar__links,
