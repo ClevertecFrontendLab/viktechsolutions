@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import LogoLoginForm from '../../../shared/assets/images/LogoLoginForm.png';
+import LogoLoginForm from '../../../shared/assets/images/logoLoginForm.png';
 import Spinner from '../../../shared/ui/Spinner/Spinner.tsx';
 import { getLoginState } from '../model/selectors/getLoginState.ts';
 import { getRegisterState } from '../model/selectors/getRegisterState.ts';
