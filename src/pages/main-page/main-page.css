@@ -7,6 +7,9 @@
     margin: 0 auto;
     box-sizing: border-box;
     min-height: calc(100vh - var(--navbar-height));
+    background: url("../../shared/assets/images/Main_page_light.png") no-repeat center center;
+    background-size: cover;
+    overflow-x: hidden;
 
     .ant-card-body {
         padding: 0;
@@ -21,7 +24,6 @@
         margin: 24px 16px 0 24px;
         padding: 24px;
     }
-
 }
 
 .card-box {
@@ -38,7 +40,6 @@
         max-height: 101px;
         height: 100%;
     }
-
 
     .text {
         display: flex;
@@ -125,11 +126,9 @@
                 padding: 0 0 0 24px;
             }
 
-
             .ant-card-body {
                 display: flex;
                 flex-direction: column;
-
                 align-items: flex-start
             }
 
@@ -144,7 +143,7 @@
 @media screen and (max-width: 834px) and (min-width: 661px) {
     .card-box {
         .card {
-         min-height: 124px;
+            min-height: 124px;
             margin: 0;
 
             .text {
@@ -197,7 +196,6 @@
                 width: 100%;
                 max-width: 537px;
 
-
                 .ant-card-body {
                     display: flex;
                     flex-direction: column;
@@ -218,7 +216,6 @@
                 align-items: center;
                 width: 100%;
                 max-width: 537px;
-
             }
 
             .ant-card {

@@ -1,0 +1,134 @@
+.confirm-email {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+
+  background: url("../../../shared/assets/images/blure.png") no-repeat center center;
+  background-size: cover;
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 539px;
+    height: 100%;
+    max-height: 428px;
+    margin: 0 16px;
+    padding: 64px 85px;
+
+    color: var(--title-light-85);
+
+    background: #ffffff;
+
+    transition: padding 0.3s ease-in-out;
+  }
+
+  &__img {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    display: block;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+
+    font: var(--font-h3);
+    font-weight: 500;
+    text-align: center;
+  }
+
+  &__description {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+
+    font: var(--font-14);
+    font-weight: 400;
+    text-align: center;
+    color: var(--secondary-text-light-45);
+  }
+
+  &__note {
+    display: block;
+    margin-top: 24px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 10px;
+
+    font: var(--font-14);
+    font-weight: 400;
+    text-align: center;
+    color: var(--secondary-text-light-45);
+  }
+
+  &__input {
+    display: block;
+    margin-right: auto;
+    margin-bottom: 24px;
+    margin-left: auto;
+  }
+
+  .confirm-email-input {
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+
+    text-align: center;
+
+    border-radius: 2px;
+  }
+}
+
+.vi__container {
+  position: relative;
+
+  display: flex;
+  width: 260px;
+  height: 40px !important;
+
+  gap: 8px;
+}
+
+.vi__character {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 40px;
+
+  font-size: var(--font-14);
+  text-align: center;
+  color: var(--title-light-85);
+
+  background-color: white;
+  border: 1px solid var(--border-light-15);
+  cursor: default;
+
+  user-select: none;
+}
+
+.confirm-email__input.error .vi__character {
+  border: 1px solid red;
+}
+
+@media screen and (max-width: 575px) {
+  .confirm-email {
+    &__box {
+      padding: calc(32px + (32 * (100vw - 360px) / 215)) calc(16px + (69 * (100vw - 360px) / 215));
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .confirm-email {
+    &__box {
+      padding: 32px 16px;
+    }
+  }
+}
