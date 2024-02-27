@@ -26,6 +26,7 @@ __diff_output__
 dist
 dist-ssr
 *.local
+.csscomb.json
 
 # yarn
 .pnp.*

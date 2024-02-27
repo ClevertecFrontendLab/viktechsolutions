@@ -1,159 +1,166 @@
 .navbar {
+  display: flex;
+  flex-direction: row;
+
+  .site-page-header {
+    width: 100%;
+
+    background: var(--geekblue-light-1);
+  }
+
+  .ant-page-header.has-breadcrumb {
+    padding-top: 16px;
+  }
+
+  .ant-page-header-heading-title {
+    margin: 0;
+    overflow: hidden;
+
+    font: var(--font-h1);
+    font-weight: 700;
+    color: var(--title-light);
+    white-space: pre-wrap;
+    text-overflow: ellipsis;
+
+    transition: font-size 0.2s ease-in-out;
+  }
+
+  .ant-page-header-heading-extra > * {
+    width: 129px;
+    height: 32px;
+  }
+
+  .ant-page-header-heading-extra {
+    margin: 0;
+  }
+
+  .ant-page-header-compact .ant-page-header-heading {
+    flex-wrap: nowrap;
+  }
+
+  .ant-space {
+    justify-content: flex-end;
+    margin-right: -18px;
+  }
+
+  &__setting {
+    position: relative;
+    right: 0;
+
     display: flex;
-    flex-direction: row;
 
-    .site-page-header {
-        background: var(--geekblue-light-1);
-        width: 100%;
+    &-circle {
+      margin-right: 10px;
     }
 
-    .ant-page-header.has-breadcrumb {
-        padding-top: 16px;
+    .ant-btn {
+      position: relative;
+
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      padding: 4px 0 4px 15px;
     }
 
-    .ant-page-header-heading-title {
-        font: var(--font-h1);
-        font-weight: 700;
-        overflow: hidden;
-        white-space: pre-wrap;
-        text-overflow: ellipsis;
-        margin: 0;
-        color: var(--title-light);
-        transition: font-size 0.2s ease-in-out;
+
+    .ant-btn .anticon {
+      position: absolute;
+      right: 0;
     }
 
-    .ant-page-header-heading-extra > * {
-        width: 129px;
-        height: 32px;
+    &-button {
+      display: flex;
+      align-items: center;
     }
 
-    .ant-page-header-heading-extra {
-        margin: 0;
+    &-text {
+      padding: 0;
+
+      font: var(--font-14);
+      font-weight: 400;
     }
-
-    .ant-page-header-compact .ant-page-header-heading {
-        flex-wrap: nowrap;
-    }
-
-    .ant-space {
-        justify-content: flex-end;
-        margin-right: -18px;
-    }
-
-    &__setting {
-        position: relative;
-        display: flex;
-        right: 0;
-
-        &-circle {
-            margin-right: 10px;
-        }
-
-        .ant-btn {
-            position: relative;
-            display: flex;
-            justify-content: flex-end;
-            width: 100%;
-            padding: 4px 0 4px 15px;
-        }
-
-
-        .ant-btn .anticon {
-            position: absolute;
-            right: 0;
-        }
-
-        &-button {
-            display: flex;
-            align-items: center;
-
-        }
-
-        &-text {
-            font: var(--font-14);
-            font-weight: 400;
-            padding: 0;
-        }
-    }
+  }
 }
 
 @media screen and (max-width: 950px) and (min-width: 835px) {
-    .navbar {
-        .ant-page-header-heading-title {
-            font: var(--font-h2);
-            font-weight: 700;
-        }
+  .navbar {
+    .ant-page-header-heading-title {
+      font: var(--font-h2);
+      font-weight: 700;
     }
+  }
 }
 
 @media screen and (max-width: 834px) and (min-width: 361px) {
-    .navbar {
-        .ant-page-header-heading-title {
-            font: var(--font-h3);
-            font-weight: 500;
-        }
-
-        .anticon svg {
-            display: none;
-        }
-
+  .navbar {
+    .ant-page-header-heading-title {
+      font: var(--font-h3);
+      font-weight: 500;
     }
+
+    .anticon svg {
+      display: none;
+    }
+  }
 }
 
 @media screen and (max-width: 360px) {
-    .navbar {
-        .ant-page-header-heading-extra {
-            margin: 0 24px 0 0;
-        }
-
-        .ant-space {
-            justify-content: flex-end;
-            margin-right: -18px;
-        }
-
-        &__setting {
-            &-circle {
-                display: flex;
-                align-content: center;
-                justify-content: center;
-                background: #ffffff;
-                border: 1px solid var(--gray-5);
-                border-radius: 50%;
-                height: 32px;
-                width: 32px;
-            }
-
-            &-text {
-                visibility: hidden;
-            }
-        }
-
-        .ant-btn > .anticon + span {
-            visibility: hidden;
-        }
-
-        .ant-page-header-heading-extra > * {
-            width: 16px;
-            height: auto;
-
-        }
-
-        .ant-btn > span {
-            display: flex;
-            position: absolute;
-            top: 0;
-        }
-
-        .navbar__setting .ant-btn .anticon {
-            height: 16px;
-            width: 16px;
-            left: 0;
-        }
-
-        .ant-page-header-heading-title {
-            font: var(--font-h4);
-            font-weight: 500;
-            max-width: 280px;
-        }
+  .navbar {
+    .ant-page-header-heading-extra {
+      margin: 0 24px 0 0;
     }
+
+    .ant-space {
+      justify-content: flex-end;
+      margin-right: -18px;
+    }
+
+    &__setting {
+      &-circle {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        width: 32px;
+        height: 32px;
+
+        background: #ffffff;
+        border: 1px solid var(--gray-5);
+        border-radius: 50%;
+      }
+
+      &-text {
+        visibility: hidden;
+      }
+    }
+
+    .ant-btn > .anticon + span {
+      visibility: hidden;
+    }
+
+    .ant-page-header-heading-extra > * {
+      width: 16px;
+      height: auto;
+    }
+
+    .ant-btn > span {
+      position: absolute;
+      top: 0;
+
+      display: flex;
+    }
+
+    .navbar__setting .ant-btn .anticon {
+      left: 0;
+
+      width: 16px;
+      height: 16px;
+    }
+
+    .ant-page-header-heading-title {
+      max-width: 280px;
+
+      font: var(--font-h4);
+      font-weight: 500;
+    }
+  }
 }
