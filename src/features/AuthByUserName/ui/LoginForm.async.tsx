@@ -1,5 +1,5 @@
 import { FC, lazy } from 'react';
 
-import { LoginSchemaForm } from './LoginForm.tsx';
+import { TabType } from './LoginForm.tsx';
 
-export const LoginFormAsync = lazy<FC<LoginSchemaForm>>(() => import('./LoginForm'));
+export const LoginFormAsync = lazy<FC<TabType>>(() => import('./LoginForm'));

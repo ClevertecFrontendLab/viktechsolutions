@@ -11,11 +11,16 @@ interface LoginFormSchema {
     remember?: boolean;
 }
 
-export const loginByEmail = createAsyncThunk<IUser, LoginFormSchema>(
+interface ErrorType {
+    message: string;
+    errorCode: number;
+}
+
+export const loginByEmail = createAsyncThunk<IUser, LoginFormSchema, { rejectValue: ErrorType }>(
   'login/loginByEmail',
   async (authData,
     thunkAPI) => {
-    const { email, password, remember } = authData;
+    const { email, password } = authData;
 
     try {
       const response = await axios.post(
@@ -41,8 +46,18 @@ export const loginByEmail = createAsyncThunk<IUser, LoginFormSchema>(
       }
 
       return response.data;
-    } catch (e: any) {
-      return thunkAPI.rejectWithValue(e);
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        return thunkAPI.rejectWithValue({
+          message: error.response.data.message,
+          errorCode: error.response.status,
+        } as ErrorType);
+      } else {
+        return thunkAPI.rejectWithValue({
+          message: 'Неизвестная ошибка',
+          errorCode: 500,
+        });
+      }
     }
   },
 );

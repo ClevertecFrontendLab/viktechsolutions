@@ -17,20 +17,19 @@ import { Login } from './Login/Login.tsx';
 import './LoginForm.scss';
 import { Register } from './Register/Register.tsx';
 
-// interface LoginFormProps {
-//     tab?: 'login' | 'registration';
-// }
-
-export interface LoginSchemaForm {
-    email?: string;
-    password?: string;
-    remember?: boolean;
-    tab?: 'login' | 'registration';
+export type TabType = {
+    tab: 'login' | 'registration';
 }
 
-const LoginForm = ({ tab }: LoginSchemaForm) => {
+export type LoginSchemaForm = {
+    email: string;
+    password: string;
+    remember?: boolean;
+}
+
+const LoginForm = ({ tab }: TabType) => {
   const location = useLocation();
-  const [activeTab, setActiveTab] = useState('1');
+  const [activeTab, setActiveTab] = useState<string>('1');
   const [errorEmail, setErrorEmail] = useState('');
   const [errorPassword, setErrorPassword] = useState('');
   const dispatch = useDispatch();
@@ -53,7 +52,7 @@ const LoginForm = ({ tab }: LoginSchemaForm) => {
 
     try {
       dispatch(loginActions.setIsLoading(true));
-      await dispatch(loginByEmail(value)).unwrap();
+      await dispatch(loginByEmail(value));
 
       navigate('/main');
       dispatch(loginActions.setIsLoading(false));
@@ -72,7 +71,8 @@ const LoginForm = ({ tab }: LoginSchemaForm) => {
       dispatch(loginActions.setError(''));
       dispatch(loginByEmail({ email: '', password: '' }));
     };
-  }, [dispatch, navigate]);
+  },
+  [dispatch, navigate]);
 
   const onRegisterFinish = useCallback(async (value: LoginSchemaForm) => {
     dispatch((registerActions.setIsLoading(true)));

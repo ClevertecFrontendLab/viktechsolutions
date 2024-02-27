@@ -1,11 +1,11 @@
 // eslint-disable-next-line import/named
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { loginByEmail } from '../services/loginByEmail.ts';
+import { loginByEmail } from '../services/loginByEmail';
 import { LoginSchema } from '../types/loginSchema.ts';
 
 const initialState: LoginSchema = {
-  error: '',
+  error: null,
   isLoading: false,
   password: '',
   email: '',
@@ -13,9 +13,9 @@ const initialState: LoginSchema = {
   message: '',
 };
 
-export const loginSlice = createSlice({
+const loginSlice = createSlice({
   name: 'login',
-  initialState: initialState,
+  initialState,
   reducers: {
     setEmail: (state, action: PayloadAction<string>) => {
       state.email = action.payload;
@@ -29,7 +29,7 @@ export const loginSlice = createSlice({
     setIsLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
     },
-    setError: (state, action: PayloadAction<string>) => {
+    setError: (state, action: PayloadAction<string | null>) => {
       state.error = action.payload;
     },
     setMessage: (state, action: PayloadAction<string>) => {
@@ -40,14 +40,14 @@ export const loginSlice = createSlice({
     builder
       .addCase(loginByEmail.pending, (state) => {
         state.isLoading = true;
-        state.error = undefined;
+        state.error = null;
       })
       .addCase(loginByEmail.fulfilled, (state) => {
         state.isLoading = false;
       })
       .addCase(loginByEmail.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = action.payload ? action.payload.message : 'Неизвестная ошибка';
       });
   },
 });
