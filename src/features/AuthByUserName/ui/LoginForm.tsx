@@ -52,7 +52,7 @@ const LoginForm = ({ tab }: TabType) => {
 
     try {
       dispatch(loginActions.setIsLoading(true));
-      await dispatch(loginByEmail(value));
+      await dispatch(loginByEmail(value)).unwrap();
 
       navigate('/main');
       dispatch(loginActions.setIsLoading(false));
