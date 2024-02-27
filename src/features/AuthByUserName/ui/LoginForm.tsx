@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import LogoLoginForm from '../../../shared/assets/images/logoLoginForm.png';
-import Spinner from '../../../shared/ui/Spinner/Spinner.tsx';
 import { getLoginState } from '../model/selectors/getLoginState.ts';
 import { getRegisterState } from '../model/selectors/getRegisterState.ts';
 import { loginByEmail } from '../model/services/loginByEmail.ts';
@@ -156,24 +155,24 @@ const LoginForm = ({ tab }: TabType) => {
   return (
     <div className="login-form">
       <div className="login-form__blur">
-        {isLoading ? <Spinner data-test-id="loader"/> :
+        {/*{isLoading ? <Spinner data-test-id="loader"/> :*/}
 
-          <Layout className="login-form__form">
-            <div className="logo">
-              <img
-                src={LogoLoginForm}
-                alt="logo"/>
-            </div>
-            <Tabs
-              onChange={handleTabChange}
-              activeKey={activeTab}
-              defaultActiveKey="1"
-              centered
-              items={tabItems}
-              className="login-form__tabs"
-              style={{ width: '100%' }}/>
-          </Layout>
-        }
+        <Layout className="login-form__form">
+          <div className="logo">
+            <img
+              src={LogoLoginForm}
+              alt="logo"/>
+          </div>
+          <Tabs
+            onChange={handleTabChange}
+            activeKey={activeTab}
+            defaultActiveKey="1"
+            centered
+            items={tabItems}
+            className="login-form__tabs"
+            style={{ width: '100%' }}/>
+        </Layout>
+        {/*}*/}
       </div>
     </div>
   );

@@ -34,6 +34,7 @@ describe('sprint 2', () => {
       statusCode: 404,
     }).as('login');
     cy.viewport(834, 900);
+    cy.wait(1000);
     cy.screenshot('login-error-1');
     cy.get('[data-test-id=login-email]').type('valadzkoaliaksei@tut.by');
     cy.get('[data-test-id=login-password]').type('1234qqQQ');
@@ -54,6 +55,7 @@ describe('sprint 2', () => {
   it('login-remember', () => {
     cy.intercept('POST', 'auth/login', { accessToken: 'SUPERUSER' }).as('login');
     cy.viewport(360, 900);
+    cy.wait(1000);
     cy.screenshot('login-remember-1');
     cy.get('[data-test-id=login-email]').type('valadzkoaliaksei@tut.by');
     cy.get('[data-test-id=login-password]').type('1234qqQQ');
