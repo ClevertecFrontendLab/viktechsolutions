@@ -8,7 +8,7 @@ import { USER_LOCALSTORAGE_KEY } from '../../../../shared/const/localstorage.ts'
 interface LoginFormSchema {
     email: string;
     password: string;
-    remember: boolean;
+    remember?: boolean;
 }
 
 export const loginByEmail = createAsyncThunk<IUser, LoginFormSchema>(
@@ -41,7 +41,7 @@ export const loginByEmail = createAsyncThunk<IUser, LoginFormSchema>(
       }
 
       return response.data;
-    } catch (e) {
+    } catch (e: any) {
       return thunkAPI.rejectWithValue(e);
     }
   },

@@ -17,24 +17,25 @@ import { Login } from './Login/Login.tsx';
 import './LoginForm.scss';
 import { Register } from './Register/Register.tsx';
 
-interface LoginFormProps {
-    tab?: 'login' | 'registration';
-}
+// interface LoginFormProps {
+//     tab?: 'login' | 'registration';
+// }
 
 export interface LoginSchemaForm {
     email?: string;
     password?: string;
     remember?: boolean;
+    tab?: 'login' | 'registration';
 }
 
-const LoginForm = ({ tab }: LoginFormProps) => {
+const LoginForm = ({ tab }: LoginSchemaForm) => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState('1');
   const [errorEmail, setErrorEmail] = useState('');
   const [errorPassword, setErrorPassword] = useState('');
   const dispatch = useDispatch();
   const { error, isLoading } = useSelector(getLoginState);
-  const { errorRegister, isLoadingRegister } = useSelector(getRegisterState);
+  const { errorRegister } = useSelector(getRegisterState);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -56,7 +57,7 @@ const LoginForm = ({ tab }: LoginFormProps) => {
 
       navigate('/main');
       dispatch(loginActions.setIsLoading(false));
-    } catch (error) {
+    } catch (error: any) {
       if (error) {
         navigate('/result/error-login', { state: { fromRequest: true }});
         dispatch(loginActions.setIsLoading(false));
@@ -95,13 +96,14 @@ const LoginForm = ({ tab }: LoginFormProps) => {
       dispatch(registerActions.setEmail(''));
       dispatch(registerActions.setPassword(''));
       dispatch(registerActions.setIsLoading(false));
-
       dispatch(registerActions.setError(''));
       dispatch(registerByEmail({ email: '', password: '' }));
     };
   }, [dispatch, navigate]);
 
-  const onFinishFailed = (errorInfo: { errorFields: any[]; }) => {
+  const onFinishFailed = (errorInfo: {
+        errorFields: any[];
+    }) => {
     const emailError = errorInfo.errorFields.find(field => field.name[0] === 'email');
 
     if (emailError) {

@@ -6,6 +6,7 @@ import VerificationInput from 'react-verification-input';
 import ExclamPoint from '../../../shared/assets/icon/exclamation_point.png';
 import { getEmailCheck } from '../../AuthByUserName/model/selectors/getEmailCheck.ts';
 import { confirmEmail } from '../../AuthByUserName/model/services/confirmEmail.ts';
+import { confirmEmailAction } from '../../AuthByUserName/model/slice/confirmEmailSlice.ts';
 import './ConfirmEmail.scss';
 
 export const ConfirmEmail = () => {
@@ -21,17 +22,14 @@ export const ConfirmEmail = () => {
       dispatch(confirmEmail({ email, code: value }))
         .unwrap()
         .then(() => navigate('/auth/change-password'))
-        .catch((error) => {
+        .catch((error: any) => {
+          console.log(error);
+          setCode('');
           setError(true);
-          // Тут должен быть вызов экшена, который обновляет состояние ошибки в слайсе
-          dispatch(updateErrorState(error.response.data));
+          dispatch(confirmEmailAction.updateErrorState(error));
         });
     }
   }, [dispatch, setCode, email, navigate]);
-
-  const errorStyle = {
-    border: error ? '1px solid red' : '',
-  };
 
   return (
     <div className="confirm-email">
@@ -59,6 +57,7 @@ export const ConfirmEmail = () => {
               validChars="0-9"
               onChange={setCode}
               onComplete={handleComplete}
+              value={code}
             />
           </div>
 

@@ -38,7 +38,6 @@ export const Login = (props: LoginProps) => {
     if (!email) {
       setEmailValid(false);
     } else {
-
       dispatch(emailCheckActions.setEmail(email));
 
       try {
@@ -47,7 +46,8 @@ export const Login = (props: LoginProps) => {
       } catch (error) {
         if (error?.status === 404 && error?.data?.message === 'Email не найден') {
           navigate('/result/error-check-email-no-exist', { state: { fromRequest: true }});
-        } else if (error?.status === 409) {
+          // navigate('/result/error-check-email', { state: { fromRequest: true }});
+        } else if (error?.status) {
           navigate('/result/error-check-email', { state: { fromRequest: true }});
         }
       }

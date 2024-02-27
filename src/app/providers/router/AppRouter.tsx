@@ -9,7 +9,7 @@ import { ChangePassword } from '../../../features/Result/ChangePassword/ChangePa
 import { ConfirmEmail } from '../../../features/Result/ConfirmEmail/ConfirmEmail.tsx';
 import Spinner from '../../../shared/ui/Spinner/Spinner.tsx';
 
-interface AppRouterProps {
+type AppRouterProps = {
     className?: string;
 }
 

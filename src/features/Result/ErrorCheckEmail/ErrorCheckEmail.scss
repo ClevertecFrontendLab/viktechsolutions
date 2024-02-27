@@ -1,0 +1,65 @@
+.error-check-email {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 539px;
+    height: 100%;
+    max-height: 550px;
+    margin: 0 16px;
+    padding: 64px 32px 56px 32px;
+    color: var(--title-light-85);
+    background: #ffffff;
+    transition: padding 0.3s ease-in-out;
+
+    &__img {
+        margin-bottom: 24px;
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__title {
+        justify-content: center;
+        font: var(--font-h3);
+        font-weight: 500;
+    }
+
+    &__subtitle {
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        padding: 0 10px;
+        font: var(--font-14);
+        font-weight: 400;
+        text-align: center;
+        color: var(--secondary-text-light-45);
+    }
+
+    .ant-btn {
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        height: 40px;
+        background: var(--geekblue-light-6);
+    }
+}
+
+@media (max-width: 575px) {
+    .result {
+        padding: calc(32px + (32 * (100vw - 360px) / 215)) calc(16px + (69 * (100vw - 360px) / 215));
+    }
+}
+
+@media (max-width: 360px) {
+    .result {
+        display: flex;
+        max-width: 328px;
+        max-height: 568px;
+    }
+}
+

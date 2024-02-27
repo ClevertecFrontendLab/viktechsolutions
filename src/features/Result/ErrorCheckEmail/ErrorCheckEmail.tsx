@@ -6,17 +6,17 @@ import { Link, useNavigate } from 'react-router-dom';
 import Forgot404 from '../../../shared/assets/icon/forgot404.png';
 import { getEmailCheck } from '../../AuthByUserName/model/selectors/getEmailCheck.ts';
 import { emailCheck } from '../../AuthByUserName/model/services/emailCheck.ts';
-import { registerByEmail } from '../../AuthByUserName/model/services/registerByEmail.ts';
-import '../Result.scss';
+import './ErrorCheckEmail.scss';
 
 export const ErrorCheckEmail = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { email } = useSelector(getEmailCheck);
+  const email = useSelector(getEmailCheck);
 
   const handleRetry = useCallback(async () => {
     if (email) {
       try {
+        console.log('check-email', email);
         await dispatch(emailCheck(email)).unwrap();
         navigate('/auth/confirm-email');
       } catch (error) {
@@ -29,22 +29,22 @@ export const ErrorCheckEmail = () => {
     }
 
     return () => {
-      dispatch(registerByEmail(email, password)).unwrap();
+      dispatch(emailCheck(email)).unwrap();
     };
   }, [dispatch, email, navigate]);
 
   return (
-    <div className="result">
-      <div className="result__img">
+    <div className="error-check-email">
+      <div className="error-check-email__img">
         <img
           src={Forgot404}
           alt="no ok icon"/>
       </div>
-      <div className="result__text">
-        <h3 className="result__title">
+      <div className="error-check-email__text">
+        <h3 className="error-check-email__title">
                     Что-то пошло не так
         </h3>
-        <p className="result__subtitle">
+        <p className="error-check-email__subtitle">
                     Произошла ошибка, попробуйте отправить форму ещё раз.
         </p>
       </div>
@@ -53,7 +53,7 @@ export const ErrorCheckEmail = () => {
         style={{ width: '100%' }}> <Button
           data-test-id="check-back-button"
           type="primary"
-          onClick={handleRetry}> Повторить</Button></Link>
+          onClick={handleRetry}>Назад</Button></Link>
     </div>
   );
 };

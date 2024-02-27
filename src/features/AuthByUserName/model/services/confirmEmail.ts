@@ -16,6 +16,7 @@ export const confirmEmail = createAsyncThunk<IUser, ConfirmEmailSchema>(
   async (authData,
     thunkAPI) => {
     try {
+
       const response = await axios.post(
         `${API.BASE}auth/confirm-email`, authData,
         {
