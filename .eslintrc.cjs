@@ -1,22 +1,31 @@
 module.exports = {
     root: true,
-    env: { browser: true, es2020: true },
+    env: {browser: true, es2020: true},
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:react-hooks/recommended',
         "plugin:react/recommended",
-        "plugin:import/errors",
         "plugin:import/warnings"
     ],
     ignorePatterns: ['dist', '.eslintrc.cjs', 'stylelint.config.cjs', 'coverage'],
+    settings: {
+        "import/parsers": {
+            "@typescript-eslint/parser": [".ts", ".tsx"]
+        },
+        "import/resolver": {
+            "typescript": {
+                "alwaysTryTypes": true
+            }
+        }
+    },
     parser: '@typescript-eslint/parser',
     plugins: ['react-refresh'],
     rules: {
         "react/react-in-jsx-scope": "off",
-        'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+        'react-refresh/only-export-components': ['warn', {allowConstantExport: true}],
         "react/jsx-first-prop-new-line": ["warn", "multiline"],
-        "react/jsx-max-props-per-line": ["warn", { "maximum": 1 }],
+        "react/jsx-max-props-per-line": ["warn", {"maximum": 1}],
         "space-before-blocks": [
             "error",
             "always"

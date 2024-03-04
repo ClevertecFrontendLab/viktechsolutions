@@ -1,4 +1,4 @@
-export interface LoginSchema {
+export type LoginSchema = {
     email: string;
     password: string;
     remember?: boolean;

@@ -1,0 +1,48 @@
+.modal {
+  backdrop-filter: blur(5px);
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    img {
+      margin: 51px auto 0;
+      display: block;
+    }
+
+    h3 {
+      font: var(--font-h3);
+      font-weight: 500;
+      margin: 20px auto 0;
+    }
+
+    p {
+      font: var(--font-14);
+      color: var(--secondary-text-light-45);
+      margin: 0 auto;
+    }
+
+    Button {
+      height: 40px;
+      width: 74px;
+      background: var(--geekblue-light-6);
+      margin: 24px auto 32px;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .modal {
+    .box {
+      img {
+        margin: 42px auto 0;
+      }
+
+      p {
+        max-width: 60%;
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+.modal-success {
+  height: 327px;
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    padding: 0 32px;
+
+    img {
+      margin-top: 42px;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font: var(--font-h3);
+      font-weight: 500;
+    }
+
+    .ant-btn {
+      width: 100%;
+      margin-bottom: 34px;
+    }
+  }
+}

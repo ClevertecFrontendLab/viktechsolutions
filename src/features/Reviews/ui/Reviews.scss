@@ -1,0 +1,40 @@
+.reviews {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin: auto;
+  height: 100%;
+  box-sizing: border-box;
+  min-height: calc(100vh - 50px);
+  overflow-x: hidden;
+}
+
+footer {
+  margin: 24px 24px 48px 24px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: normal;
+  margin-top: 12px;
+
+  .ant-btn {
+    width: 142px;
+    height: 40px;
+    margin-top: 20px;
+    background: var(--geekblue-light-6);
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .box {
+    .ant-btn {
+      width: 91%;
+    }
+  }
+}

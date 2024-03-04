@@ -48,10 +48,13 @@ export const loginByEmail = createAsyncThunk<IUser, LoginFormSchema, { rejectVal
       return response.data;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
-        return thunkAPI.rejectWithValue({
-          message: error.response.data.message,
+
+        const errorInfo = {
+          message: error.response.data.message || 'Произошла ошибка',
           errorCode: error.response.status,
-        } as ErrorType);
+        };
+
+        return thunkAPI.rejectWithValue(errorInfo);
       } else {
         return thunkAPI.rejectWithValue({
           message: 'Неизвестная ошибка',
