@@ -5,7 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { ModalErrorReview } from '../../features/Reviews';
-import { getSeeReviewsIsLoading } from '../../features/Reviews/model/selectors/getSeeReviewsIsLoading.ts';
+import {
+  getSeeReviewsIsLoading,
+} from '../../features/Reviews/model/selectors/getSeeReviewsIsLoading.ts';
 import { USER_LOCALSTORAGE_KEY } from '../../shared/const/localstorage.ts';
 import Spinner from '../../shared/ui/Spinner/Spinner.tsx';
 import { Calendar } from '../../widgets/Icons/Calendar';
@@ -34,23 +36,7 @@ const MainPage: React.FC = () => {
   const handleGetReview = useCallback(
     async () => {
       navigate('/main/feedbacks');
-      // try {
-      //   await dispatch(seeReviews()).unwrap();
-      //
-      // } catch (error) {
-      //   if (error?.errorCode === 403) {
-      //     localStorage.removeItem(USER_LOCALSTORAGE_KEY);
-      //     sessionStorage.removeItem(USER_LOCALSTORAGE_KEY);
-      //     navigate('/auth');
-      //   }
-      //   else if (token && error?.errorCode) {
-      //     setOpen(true);
-      //   }
-      // }
 
-      return (() => {
-        // dispatch(seeReviews());
-      });
     }, [navigate],
   );
 

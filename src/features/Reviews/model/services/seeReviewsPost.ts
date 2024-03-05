@@ -37,6 +37,7 @@ export const seeReviewsPost = createAsyncThunk<ReviewScheme, {
         `${API.BASE}feedback`,
         {
           message,
+          rating,
         },
         {
           headers: {

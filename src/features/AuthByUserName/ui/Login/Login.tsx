@@ -36,15 +36,6 @@ export const Login = (props: LoginProps) => {
   const [emailValid, setEmailValid] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const [remember, setRemember] = useState(false);
-
-  // useEffect(() => {
-  //   const values = form.getFieldsValue(['remember']);
-  //   const remember = values.remember;
-  //
-  //   dispatch(loginActions.setRememberMe(remember ?? false));
-  //
-  // }, [dispatch, form]);
 
   const handleRememberChange = e => {
     const checked = e.target.checked;
@@ -181,7 +172,6 @@ export const Login = (props: LoginProps) => {
             onClick={() => (
               sessionStorage.setItem('isAuthenticating', 'true'),
               window.location.href = 'https://marathon-api.clevertec.ru/auth/google')}
-
           >
                         Авторизация через Google
           </Button>

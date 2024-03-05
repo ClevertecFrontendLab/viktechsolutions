@@ -22,24 +22,27 @@ const App = () => {
   const [background, setBackground] = useState({});
   const navigate = useNavigate();
   const remember = useSelector(getLoginRemember);
-  const token = sessionStorage.getItem(USER_LOCALSTORAGE_KEY) || localStorage.getItem(USER_LOCALSTORAGE_KEY);
+  // const token = sessionStorage.getItem(USER_LOCALSTORAGE_KEY) || localStorage.getItem(USER_LOCALSTORAGE_KEY);
+  const handleLoad = () => {
+    if (sessionStorage.getItem('isAuthenticating') === 'false') {
+      sessionStorage.removeItem('accessToken');
+
+      dispatch(userActions.initAuthData());
+      navigate('/auth');
+    }
+  };
 
   useEffect(() => {
+    const checkAuthentication = () => {
+      const token = sessionStorage.getItem(USER_LOCALSTORAGE_KEY) || localStorage.getItem(USER_LOCALSTORAGE_KEY);
 
-    const handleLoad = () => {
-      if (sessionStorage.getItem('isAuthenticating') === 'false') {
-        sessionStorage.removeItem('accessToken');
+      if (!token) {
         navigate('/auth');
       }
     };
 
+    checkAuthentication();
     window.addEventListener('load', handleLoad);
-
-    if (!token) {
-      navigate('/auth');
-
-      return;
-    }
 
     const queryParams = new URLSearchParams(window.location.search).get('accessToken');
 
