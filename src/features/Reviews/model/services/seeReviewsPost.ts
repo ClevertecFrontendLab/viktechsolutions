@@ -35,7 +35,9 @@ export const seeReviewsPost = createAsyncThunk<ReviewScheme, {
     try {
       const response = await axios.post(
         `${API.BASE}feedback`,
-        { message, rating },
+        {
+          message,
+        },
         {
           headers: {
             'Content-Type': 'application/json',

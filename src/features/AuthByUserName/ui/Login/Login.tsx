@@ -4,7 +4,9 @@ import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { DynamicModuleLoader } from '../../../../shared/components/DynamicModuleLoader/DynamicModuleLoader.tsx';
+import {
+  DynamicModuleLoader,
+} from '../../../../shared/components/DynamicModuleLoader/DynamicModuleLoader.tsx';
 import { getLoginStateIsLoading } from '../../model/selectors/getLoginStateIsLoading.ts';
 import { emailCheck } from '../../model/services/emailCheck.ts';
 import { emailCheckActions, emailCheckReducer } from '../../model/slice/emailCheckSlice.ts';
@@ -151,7 +153,8 @@ export const Login = (props: LoginProps) => {
 
           >
             <Checkbox
-              onChange={handleRememberChange}
+              checked={false}
+              // onChange={handleRememberChange}
               data-test-id="login-remember">Запомнить
                             меня</Checkbox>
           </Form.Item>

@@ -1,16 +1,22 @@
 import { Button, Modal } from 'antd';
 
 import NoOk from '../../../../shared/assets/icon/no_ok_icon.png';
+import './ModalErrorData.scss';
 
 interface ModalProps {
     open: boolean;
     setOpen: (open: boolean) => void;
+    onWriteReview: () => void;
 }
 
 const ModalErrorData = (props: ModalProps) => {
-  const { open, setOpen } = props;
+  const { open, setOpen, onWriteReview } = props;
   const handleOk = () => {
     setOpen(false);
+  };
+
+  const handleWriteReview = () => {
+    onWriteReview();
   };
 
   return (
@@ -20,7 +26,7 @@ const ModalErrorData = (props: ModalProps) => {
       centered
       open={open}
       footer={null}
-      className="modal"
+      wrapClassName="modal-error-data"
       maskStyle={{
         backgroundColor: 'rgba(70,150,236,0.5)',
         backdropFilter: 'blur(5px)',
@@ -33,15 +39,28 @@ const ModalErrorData = (props: ModalProps) => {
           alt="error"/>
         <h3 className="box__title">Данные не сохранились</h3>
         <p>Что-то пошло не так. Попробуйте ещё раз.</p>
-        <Button
-          data-test-id="write-review-not-saved-modal"
-          type="primary"
-          onClick={handleOk}
-          style={{ backgroundColor: 'var(--geekblue-light-6)', height: '40px' }}>Написать отзыв</Button>
-        <Button
-          type="primary"
-          onClick={handleOk}
-          style={{ backgroundColor: '#fff', height: '40px' }}>Закрыть</Button>
+        <div className="modal-error-data__buttons">
+          <Button
+            data-test-id="write-review-not-saved-modal"
+            type="primary"
+            onClick={handleWriteReview}
+            style={{
+              backgroundColor: 'var(--geekblue-light-6)',
+              height: '40px',
+
+              marginRight: '8px',
+            }}>Написать
+                        отзыв</Button>
+          <Button
+            type="primary"
+            onClick={handleOk}
+            style={{
+              color: 'var(--primary-text-light-85)',
+              backgroundColor: '#fff',
+              height: '40px',
+              border: '1px solid var(--gray-5)',
+            }}>Закрыть</Button>
+        </div>
       </div>
     </Modal>
   );

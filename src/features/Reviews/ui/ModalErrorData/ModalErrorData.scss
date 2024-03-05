@@ -1,0 +1,50 @@
+.modal-error-data {
+    &__buttons {
+        display: flex;
+        margin-top: 24px;
+        margin-bottom: 32px;
+
+        .ant-btn {
+            width: 180px;
+            font: var(--font-14);
+        }
+    }
+
+    .box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            margin: 22px auto 0;
+            display: block;
+        }
+
+        h3 {
+            font: var(--font-h3);
+            font-weight: 500;
+            margin: 20px auto 0;
+        }
+
+        p {
+            font: var(--font-14);
+            color: var(--secondary-text-light-45);
+            margin: 0 auto;
+        }
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .modal-error-data {
+        &__buttons {
+            display: flex;
+            margin-top: 24px;
+            margin-bottom: 32px;
+
+            .ant-btn {
+                width: 144px;
+            }
+        }
+    }
+}

@@ -16,7 +16,9 @@ interface ReviewItemProps {
 
 export const ReviewItem = ({ result }: ReviewItemProps) => {
   // const { result } = props;
-  const customCharacter = (starProps: { index: number }) => {
+  const customCharacter = (starProps: {
+        index: number
+    }) => {
     return result.rating && result.rating > starProps.index ? <StarFilled
 
       style={{ color: '#faad14', fontSize: '13px' }}/> :
@@ -39,16 +41,19 @@ export const ReviewItem = ({ result }: ReviewItemProps) => {
   return (
     <div
       className="review-item">
-      <div className="avatar"><img
-        src={result.imageSrc || Avatar}
-        alt="avatar"/>
-      <div className="name">
-        {result.fullName ? result.fullName.split(' ').map((word, index) => (
-          <span
-            key={index}
-            style={{ display: 'block' }}>{word}</span>
-        )) : 'Аноним'}
-      </div>
+      <div className="box">
+        <div className="avatar">
+          <img
+            src={result.imageSrc || Avatar}
+            alt="avatar"/>
+          <div className="name">
+            {result.fullName ? result.fullName.split(' ').map((word, index) => (
+              <span
+                key={index}
+                style={{ display: 'block' }}>{word}</span>
+            )) : 'Аноним'}
+          </div>
+        </div>
       </div>
       <div className="text-box">
         <div className="rating">
