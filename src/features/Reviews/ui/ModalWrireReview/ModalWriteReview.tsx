@@ -22,8 +22,7 @@ export const ModalWriteReview = (props: ModalProps) => {
 
   const handleSubmit = useCallback(async () => {
 
-    console.log(textAreaValue && rating);
-    if (textAreaValue && rating) {
+    if (rating) {
       try {
         dispatch(seeReviewsPost({ message: textAreaValue, rating })).unwrap();
         dispatch(seeReviews()).unwrap();
@@ -65,6 +64,7 @@ export const ModalWriteReview = (props: ModalProps) => {
       width={539}
       footer={[
         <Button
+          data-test-id="new-review-submit-button"
           key="submit"
           type="primary"
           style={{ backgroundColor: 'var(--geekblue-light-6)', height: '40px' }}

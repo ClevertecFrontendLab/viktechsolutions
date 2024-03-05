@@ -32,6 +32,14 @@ footer {
 }
 
 @media screen and (max-width: 360px) {
+  .reviews {
+    footer {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      margin: 24px 24px 48px 24px;
+    }
+  }
   .box {
     .ant-btn {
       width: 91%;

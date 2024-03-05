@@ -33,11 +33,11 @@ const AppRouter = ({ className }: AppRouterProps) => {
               index
               element={<MainPage/>}/>
             <Route
-              path="feedbacks/*"
+              path="feedbacks"
               element={<Reviews/>}/>
           </Route>
           <Route
-            path="auth/login"
+            path="auth"
             element={<LoginFormAsync tab="login"/>}/>
           <Route
             path="auth/registration"

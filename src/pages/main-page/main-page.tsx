@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { ModalErrorReview } from '../../features/Reviews';
 import { getSeeReviewsIsLoading } from '../../features/Reviews/model/selectors/getSeeReviewsIsLoading.ts';
-import { seeReviews } from '../../features/Reviews/model/services/seeReviews.ts';
 import { USER_LOCALSTORAGE_KEY } from '../../shared/const/localstorage.ts';
 import Spinner from '../../shared/ui/Spinner/Spinner.tsx';
 import { Calendar } from '../../widgets/Icons/Calendar';
@@ -20,10 +19,12 @@ const MainPage: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const token = localStorage.getItem(USER_LOCALSTORAGE_KEY) || sessionStorage.getItem(USER_LOCALSTORAGE_KEY);
+
   const [open, setOpen] = useState(false);
   const isLoadingReview = useSelector(getSeeReviewsIsLoading);
 
   useEffect(() => {
+    sessionStorage.setItem('isAuthenticating', 'false');
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -32,23 +33,25 @@ const MainPage: React.FC = () => {
 
   const handleGetReview = useCallback(
     async () => {
-      try {
-        await dispatch(seeReviews()).unwrap();
-        navigate('/main/feedbacks');
-      } catch (error) {
-        if (error?.errorCode === 403) {
-          localStorage.removeItem(USER_LOCALSTORAGE_KEY);
-          sessionStorage.removeItem(USER_LOCALSTORAGE_KEY);
-          navigate('/auth/login');
-        } else if (token && error?.errorCode) {
-          setOpen(true);
-        }
-      }
+      navigate('/main/feedbacks');
+      // try {
+      //   await dispatch(seeReviews()).unwrap();
+      //
+      // } catch (error) {
+      //   if (error?.errorCode === 403) {
+      //     localStorage.removeItem(USER_LOCALSTORAGE_KEY);
+      //     sessionStorage.removeItem(USER_LOCALSTORAGE_KEY);
+      //     navigate('/auth');
+      //   }
+      //   else if (token && error?.errorCode) {
+      //     setOpen(true);
+      //   }
+      // }
 
       return (() => {
-        dispatch(seeReviews());
+        // dispatch(seeReviews());
       });
-    }, [dispatch, navigate, token],
+    }, [navigate],
   );
 
   if (isLoading || isLoadingReview) {
@@ -104,6 +107,7 @@ const MainPage: React.FC = () => {
           style={{ border: 'none' }}>
           <div className="textBtn">
             <Button
+              data-test-id="see-reviews"
               type="text"
               className="btn"
               onClick={handleGetReview}

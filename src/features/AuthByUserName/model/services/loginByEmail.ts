@@ -16,7 +16,9 @@ interface ErrorType {
     errorCode: number;
 }
 
-export const loginByEmail = createAsyncThunk<IUser, LoginFormSchema, { rejectValue: ErrorType }>(
+export const loginByEmail = createAsyncThunk<IUser, LoginFormSchema, {
+    rejectValue: ErrorType
+}>(
   'login/loginByEmail',
   async (authData,
     thunkAPI) => {
@@ -37,12 +39,15 @@ export const loginByEmail = createAsyncThunk<IUser, LoginFormSchema, { rejectVal
         throw new Error('Нет ответа от сервера');
       }
 
+      sessionStorage.setItem('isAuthenticating', 'true');
+
       if (authData.remember) {
         localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data));
         thunkAPI.dispatch(userActions.setAuthData(response.data));
       } else {
         sessionStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data));
         thunkAPI.dispatch(userActions.setAuthData(response.data));
+        sessionStorage.setItem('isAuthenticating', 'false');
       }
 
       return response.data;

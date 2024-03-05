@@ -4,14 +4,14 @@ import Error from '../../../../shared/assets/icon/forgot404.png';
 import './ModalErrorReview.scss';
 
 interface ModalProps {
-    open: boolean;
-    setOpen: (open: boolean) => void;
+    openError: boolean;
+    setOpenError: (open: boolean) => void;
 }
 
 const ModalErrorReview = (props: ModalProps) => {
-  const { open, setOpen } = props;
+  const { openError, setOpenError } = props;
   const handleOk = () => {
-    setOpen(false);
+    setOpenError(false);
   };
 
   return (
@@ -19,7 +19,7 @@ const ModalErrorReview = (props: ModalProps) => {
       closable={false}
       cancelText
       centered
-      open={open}
+      open={openError}
       footer={null}
       className="modal"
       maskStyle={{

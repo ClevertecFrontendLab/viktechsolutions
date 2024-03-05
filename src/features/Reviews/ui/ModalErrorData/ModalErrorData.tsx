@@ -34,6 +34,7 @@ const ModalErrorData = (props: ModalProps) => {
         <h3 className="box__title">Данные не сохранились</h3>
         <p>Что-то пошло не так. Попробуйте ещё раз.</p>
         <Button
+          data-test-id="write-review-not-saved-modal"
           type="primary"
           onClick={handleOk}
           style={{ backgroundColor: 'var(--geekblue-light-6)', height: '40px' }}>Написать отзыв</Button>

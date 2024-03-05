@@ -16,13 +16,23 @@ export const userSlice = createSlice({
       state.isLoading = action.payload;
     },
     initAuthData: (state) => {
-
       state.authData = undefined;
-      const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
+
+      const user = localStorage.getItem(USER_LOCALSTORAGE_KEY) || sessionStorage.getItem(USER_LOCALSTORAGE_KEY);
 
       if (user) {
-        state.authData = JSON.parse(user);
+        try {
+          const tokenObject = JSON.parse(user);
+
+          if (tokenObject.accessToken) {
+            state.authData = { accessToken: tokenObject.accessToken };
+
+          }
+        } catch (error) {
+          console.log(error);
+        }
       }
+
     },
     logout: (state) => {
       state.authData = undefined;

@@ -1,4 +1,4 @@
-import { EyeInvisibleOutlined, EyeOutlined, GooglePlusOutlined } from '@ant-design/icons';
+import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,7 +14,9 @@ import { LoginSchemaForm } from '../LoginForm.tsx';
 interface LoginProps {
     className?: string;
     onFinish: (value: LoginSchemaForm) => void;
-    onFinishFailed: (errorInfo: { errorFields: any[]; }) => void;
+    onFinishFailed: (errorInfo: {
+        errorFields: any[];
+    }) => void;
     error: boolean;
     errorEmail: string;
     errorPassword: string;
@@ -32,12 +34,26 @@ export const Login = (props: LoginProps) => {
   const [emailValid, setEmailValid] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // const [remember, setRemember] = useState(false);
+
+  // useEffect(() => {
+  //   const values = form.getFieldsValue(['remember']);
+  //   const remember = values.remember;
+  //
+  //   dispatch(loginActions.setRememberMe(remember ?? false));
+  //
+  // }, [dispatch, form]);
+
+  const handleRememberChange = e => {
+    const checked = e.target.checked;
+
+    dispatch(loginActions.setRememberMe(checked)); // Отправляет действие в Redux store, если необходимо
+  };
 
   const onCheckEmail = useCallback(async () => {
     const values = form.getFieldsValue();
     const email = values.email;
 
-    console.log(email);
     if (!email) {
       setEmailValid(false);
     } else {
@@ -132,8 +148,12 @@ export const Login = (props: LoginProps) => {
             name="remember"
             valuePropName="checked"
             noStyle
+
           >
-            <Checkbox data-test-id="login-remember">Запомнить меня</Checkbox>
+            <Checkbox
+              onChange={handleRememberChange}
+              data-test-id="login-remember">Запомнить
+                            меня</Checkbox>
           </Form.Item>
           <Button
             data-test-id="login-forgot-button"
@@ -153,8 +173,14 @@ export const Login = (props: LoginProps) => {
           >Войти</Button>
         </Form.Item>
         <Form.Item className="ggl">
-          <Button type="default">
-            <GooglePlusOutlined/> Войти через Google
+          <Button
+            type="primary"
+            onClick={() => (
+              sessionStorage.setItem('isAuthenticating', 'true'),
+              window.location.href = 'https://marathon-api.clevertec.ru/auth/google')}
+
+          >
+                        Авторизация через Google
           </Button>
         </Form.Item>
       </Form>
