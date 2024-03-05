@@ -1,4 +1,4 @@
-import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
+import { EyeInvisibleOutlined, EyeOutlined, GooglePlusOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -167,13 +167,13 @@ export const Login = (props: LoginProps) => {
           >Войти</Button>
         </Form.Item>
         <Form.Item className="ggl">
+
           <Button
-            type="primary"
+            type="default"
             onClick={() => (
               sessionStorage.setItem('isAuthenticating', 'true'),
-              window.location.href = 'https://marathon-api.clevertec.ru/auth/google')}
-          >
-                        Авторизация через Google
+              window.location.href = 'https://marathon-api.clevertec.ru/auth/google')}>
+            <GooglePlusOutlined/> Войти через Google
           </Button>
         </Form.Item>
       </Form>

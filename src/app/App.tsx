@@ -42,7 +42,7 @@ const App = () => {
     };
 
     checkAuthentication();
-    window.addEventListener('load', handleLoad);
+    window.addEventListener('beforeunload', handleLoad);
 
     const queryParams = new URLSearchParams(window.location.search).get('accessToken');
 
