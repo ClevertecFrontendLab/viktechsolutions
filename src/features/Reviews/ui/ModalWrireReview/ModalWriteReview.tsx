@@ -47,6 +47,10 @@ export const ModalWriteReview = (props: ModalProps) => {
     setRating(value);
   };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const customCharacter = (starProps: {
         index: number
     }) => {
@@ -59,6 +63,7 @@ export const ModalWriteReview = (props: ModalProps) => {
         setOpenSuccess={setOpenSuccess}
         wrapClassName="modal-write"
         centered
+        onCancel={handleClose}
         title={<div
           style={{
             font: 'var(--font-h5)',

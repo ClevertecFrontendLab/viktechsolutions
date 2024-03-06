@@ -1,5 +1,5 @@
 import { Button } from 'antd';
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { USER_LOCALSTORAGE_KEY } from '../../../shared/const/localstorage.ts';
@@ -25,17 +25,23 @@ const Reviews = memo(() => {
   const result = useSelector(getSeeReviews);
   const dispatch = useDispatch();
   const token = localStorage.getItem(USER_LOCALSTORAGE_KEY) || sessionStorage.getItem(USER_LOCALSTORAGE_KEY);
+
   const openModalWriteReview = () => {
     setOpen(true);
-    setOpenErrorData(false); // Закрываем ModalErrorData при открытии ModalWriteReview
+    setOpenErrorData(false);
   };
+
+  const sortedReviews = useMemo(() => {
+    const sorted = [...result].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+    return toggle ? sorted : sorted.slice(0, 4);
+  }, [result, toggle]);
 
   useEffect(() => {
     const fetchReviews = async () => {
-      if (!result || result.length === 0) {
+      if (result.length === 0) {
         try {
           await dispatch(seeReviews()).unwrap();
-          // navigate('/main/feedbacks');
         } catch (error) {
           if (error?.errorCode === 403) {
             localStorage.removeItem(USER_LOCALSTORAGE_KEY);
@@ -45,51 +51,49 @@ const Reviews = memo(() => {
             setOpenError(true);
           }
         }
-      } else {
-        const sortedReviews = [...result].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-
-        setDisplayedReviews(toggle ? sortedReviews : sortedReviews.slice(0, 4));
       }
     };
 
     fetchReviews();
 
-  }, [dispatch, result, toggle, token]);
+  }, [dispatch, result.length, token]);
+
+  useEffect(() => {
+    setDisplayedReviews(sortedReviews);
+  }, [sortedReviews, toggle]);
 
   const seeMore = () => {
     setToggle(!toggle);
   };
 
   return (
-
     <>
-      {displayedReviews &&
-                <div className="reviews">
-                  <div className="box">
-                    {displayedReviews.map((review) => (
-                      <ReviewItem
-                        key={review.id}
-                        result={review}/>
-                    ))
-                    }
-                  </div>
-                  <footer>
-                    <Button
-                      data-test-id="write-review"
-                      type="primary"
-                      style={{ backgroundColor: 'var(--geekblue-light-6)', height: '40px' }}
-                      onClick={() => setOpen(true)}>Написать отзыв</Button>
-                    {displayedReviews.length >= 4 && <Button
-                      data-test-id="all-reviews-button"
-                      type="text"
-                      style={{ color: 'var(--geekblue-light-6)', height: '40px' }}
-                      onClick={seeMore}>{toggle ? 'Свернуть все отзывы' : 'Развернуть все отзывы'}</Button>
-                    }
-                  </footer>
-                  <ModalErrorReview
-                    setOpenError={setOpenError}
-                    openError={openError}/>
-                </div>
+      {displayedReviews && <div className="reviews">
+        <div className="box">
+          {displayedReviews.map((review) => (
+            <ReviewItem
+              key={review.id}
+              result={review}/>
+          ))
+          }
+        </div>
+        <footer>
+          <Button
+            data-test-id="write-review"
+            type="primary"
+            style={{ backgroundColor: 'var(--geekblue-light-6)', height: '40px' }}
+            onClick={() => setOpen(true)}>Написать отзыв</Button>
+          {displayedReviews.length >= 4 && <Button
+            data-test-id="all-reviews-button"
+            type="text"
+            style={{ color: 'var(--geekblue-light-6)', height: '40px' }}
+            onClick={seeMore}>{toggle ? 'Свернуть все отзывы' : 'Развернуть все отзывы'}</Button>
+          }
+        </footer>
+        <ModalErrorReview
+          setOpenError={setOpenError}
+          openError={openError}/>
+      </div>
       }
       {!result && <div className="reviews">
         <div className="box">
@@ -115,7 +119,6 @@ const Reviews = memo(() => {
         onWriteReview={openModalWriteReview}
       />
     </>
-
   );
 });
 

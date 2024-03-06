@@ -132,7 +132,7 @@ const LoginForm = memo(({ tab }: TabType) => {
     if (key === '2') {
       navigate('/auth/registration');
     } else {
-      navigate('/auth/login');
+      navigate('/auth');
     }
   };
 

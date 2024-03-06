@@ -5,30 +5,34 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
     text-align: center;
 
     img {
-      margin: 51px auto 0;
       display: block;
+      margin: 51px auto 0;
     }
 
     h3 {
+      margin: 20px auto 0;
+
       font: var(--font-h3);
       font-weight: 500;
-      margin: 20px auto 0;
     }
 
     p {
+      margin: 0 auto;
+
       font: var(--font-14);
       color: var(--secondary-text-light-45);
-      margin: 0 auto;
     }
 
-    Button {
-      height: 40px;
+    button {
       width: 74px;
-      background: var(--geekblue-light-6);
+      height: 40px;
       margin: 24px auto 32px;
+
+      background: var(--geekblue-light-6);
     }
   }
 }
