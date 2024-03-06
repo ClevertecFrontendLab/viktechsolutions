@@ -4,24 +4,21 @@
 
   .site-page-header {
     width: 100%;
-
     background: var(--geekblue-light-1);
   }
 
   .ant-page-header.has-breadcrumb {
-    padding-top: 16px;
+    //padding-top: 16px;
   }
 
   .ant-page-header-heading-title {
     margin: 0;
     overflow: hidden;
-
     font: var(--font-h1);
     font-weight: 700;
     color: var(--title-light);
     white-space: pre-wrap;
     text-overflow: ellipsis;
-
     transition: font-size 0.2s ease-in-out;
   }
 
@@ -46,7 +43,6 @@
   &__setting {
     position: relative;
     right: 0;
-
     display: flex;
 
     &-circle {
@@ -55,13 +51,11 @@
 
     .ant-btn {
       position: relative;
-
       display: flex;
       justify-content: flex-end;
       width: 100%;
       padding: 4px 0 4px 15px;
     }
-
 
     .ant-btn .anticon {
       position: absolute;
@@ -75,7 +69,6 @@
 
     &-text {
       padding: 0;
-
       font: var(--font-14);
       font-weight: 400;
     }
@@ -122,7 +115,6 @@
         align-content: center;
         width: 32px;
         height: 32px;
-
         background: #ffffff;
         border: 1px solid var(--gray-5);
         border-radius: 50%;
@@ -145,20 +137,17 @@
     .ant-btn > span {
       position: absolute;
       top: 0;
-
       display: flex;
     }
 
     .navbar__setting .ant-btn .anticon {
       left: 0;
-
       width: 16px;
       height: 16px;
     }
 
     .ant-page-header-heading-title {
       max-width: 280px;
-
       font: var(--font-h4);
       font-weight: 500;
     }

@@ -5,13 +5,15 @@ import type { NavigateOptions, To } from 'react-router-dom';
 
 import { UserSchema } from '../entities/User';
 import { LoginSchema } from '../features/AuthByUserName';
+import { ReviewScheme } from '../features/Reviews/model/types/reviewSchema.ts';
 
 export interface StateSchema {
     user: UserSchema;
     loginForm: LoginSchema;
-    registerForm?: LoginSchema;
-    emailCheck?: LoginSchema;
-    changePassword?: LoginSchema;
+    registerForm: LoginSchema;
+    emailCheck: LoginSchema;
+    changePassword: LoginSchema;
+    seeReviews: ReviewScheme;
     // profile?: ProfileSchema;
 }
 

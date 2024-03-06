@@ -1,158 +1,126 @@
 :root {
-    //FONTS
-    --font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-
-    --font-size-h1: 38px;
-    --font-line-h1: 49.4px;
-    --font-h1: var(--font-size-h1) / var(--font-line-h1) var(--font-family);
-
-    --font-size-h2: 32px;
-    --font-line-h2: 41.6px;
-    --font-h2: var(--font-size-h2) / var(--font-line-h2) var(--font-family);
-
-    --font-size-h3: 24px;
-    --font-line-h3: 31.2px;
-    --font-h3: var(--font-size-h3) / var(--font-line-h3) var(--font-family);
-
-    --font-size-h4: 20px;
-    --font-line-h4: 26px;
-    --font-h4: var(--font-size-h4) / var(--font-line-h4) var(--font-family);
-
-    --font-size-16: 16px;
-    --font-line-16: 20.8px;
-    --font-16: var(--font-size-16) / var(--font-line-16) var(--font-family);
-
-    --font-size-14: 14px;
-    --font-line-14: 18.2px;
-    --font-14: var(--font-size-14) / var(--font-line-14) var(--font-family);
-
-    --font-size-12: 12px;
-    --font-line-12: 16.8px;
-    --font-12: var(--font-size-12) / var(--font-line-12) var(--font-family);
-
-    //color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    //background-color: #242424;
-
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
-
-    //COLORS
-
-    //LIGHT
-    --geekblue-light-1: #F0F5FF;
-    --geekblue-light-2: #d6e4ff;
-    --geekblue-light-3: #adc6ff;
-    --geekblue-light-4: #85a5ff;
-    --geekblue-light-5: #597ef7;
-    --geekblue-light-6: #2f54eb;
-    --geekblue-light-7: #1d39c4;
-    --geekblue-light-8: #10239e;
-    --geekblue-light-9: #061178;
-    --geekblue-light-10: #030852;
-
-    --light-blue-1: #e6f7ff;
-    --light-blue-2: #bae7ff;
-    --light-blue-3: #91d5ff;
-    --light-blue-4: #69c0ff;
-    --light-blue-5: #40a9ff;
-    --light-blue-6: #1890ff;
-    --light-blue-7: #096dd9;
-    --light-blue-8: #0050b3;
-    --light-blue-9: #003a8c;
-    --light-blue-10: #002766;
-
-
-    --light-green-6: #52c41a;
-
-    --light-gold-6: #faad14;
-
-    --light-red-5: #ff4d4f;
-
-    //DARK
-    --geekblue-dark-1: #131629;
-    --geekblue-dark-2: #161d40;
-    --geekblue-dark-3: #1c2755;
-    --geekblue-dark-4: #203175;
-    --geekblue-dark-5: #263ea0;
-    --geekblue-dark-6: #2b4acb;
-    --geekblue-dark-7: #5273e0;
-    --geekblue-dark-8: #7f9ef3;
-    --geekblue-dark-9: #a8c1f8;
-    --geekblue-dark-10: #d2e0fa;
-
-    --dark-blue-1: #111d2c;
-    --dark-blue-2: #112a45;
-    --dark-blue-3: #15395b;
-    --dark-blue-4: #164c7e;
-    --dark-blue-5: #1765ad;
-    --dark-blue-6: #177ddc;
-    --dark-blue-7: #3c9ae8;
-    --dark-blue-8: #65b7f3;
-    --dark-blue-9: #8dcff8;
-    --dark-blue-10: #b7e3fa;
-
-    --dark-green-6: #49aa19;
-
-    --dark-gold-6: #d89614;
-
-    --dark-red-5: #a61d24;
-
-
-    // **Палитра серых цветов:**
-
-    // Светлые серые
-    --gray-1: #ffffff;
-    --gray-2: #f7f7f7;
-    --gray-3: #e6e6e6;
-    --gray-4: #d6d6d6;
-    --gray-5: #c6c6c6;
-
-    // Средние серые
-    --gray-6: #b6b6b6;
-    --gray-7: #a6a6a6;
-    --gray-8: #969696;
-    --gray-9: #868686;
-
-    // Темные серые
-    --gray-10: #767676;
-    --gray-11: #666666;
-    --gray-12: #565656;
-    --gray-13: #464646;
-    --gray-14: #363636;
-
-    --title-light-85: #262626;
-    --title-dark-85: #DBDBDB;
-    --primary-text-light-85: #262626;
-    --primary-text-dark-85: #DBDBDB;
-    --secondary-text-light-45: #8C8C8C;
-    --secondary-text-dark-45: #7C7C7C;
-    --disable-light-25: #BFBFBF;
-    --disable-dark-30: #5A5A5A;
-    --border-light-15: #D9D9D9;
-    --border-dark-20: #434343;
-    --dividers-light-6: #434343;
-    --dividers-dark-12: #303030;
-    --background-light-4: #F5F5F5;
-    --background-dark-8: #262626;
-    --table-header-light-2: #FAFAFA;
-    --table-header-dark-4: #1C1C1C;
-
-
-    --link-light: var(--light-blue-6);
-    --link-dark: var(--dark-blue-6);
-
-    --success-light: var(--light-green-6);
-    --success-dark: var(--dark-green-6);
-
-    --warning-light: var(--light-gold-6);
-    --warning-dark: var(--dark-gold-6);
-
-    --error-light: var(--light-red-5);
-    --error-dark: var(--dark-red-5);
-
-
+  //FONTS
+  --font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-size-h1: 38px;
+  --font-line-h1: 49.4px;
+  --font-h1: var(--font-size-h1) / var(--font-line-h1) var(--font-family);
+  --font-size-h2: 32px;
+  --font-line-h2: 41.6px;
+  --font-h2: var(--font-size-h2) / var(--font-line-h2) var(--font-family);
+  --font-size-h3: 24px;
+  --font-line-h3: 31.2px;
+  --font-h3: var(--font-size-h3) / var(--font-line-h3) var(--font-family);
+  --font-size-h4: 20px;
+  --font-line-h4: 26px;
+  --font-h4: var(--font-size-h4) / var(--font-line-h4) var(--font-family);
+  --font-size-h5: 16px;
+  --font-line-h5: 20.8px;
+  --font-h5: var(--font-size-h5) / var(--font-line-h5) var(--font-family);
+  --font-size-16: 16px;
+  --font-line-16: 20.8px;
+  --font-16: var(--font-size-16) / var(--font-line-16) var(--font-family);
+  --font-size-14: 14px;
+  --font-line-14: 18.2px;
+  --font-14: var(--font-size-14) / var(--font-line-14) var(--font-family);
+  --font-size-12: 12px;
+  --font-line-12: 16.8px;
+  --font-12: var(--font-size-12) / var(--font-line-12) var(--font-family);
+  //color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  //background-color: #242424;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  //COLORS
+  //LIGHT
+  --geekblue-light-1: #f0f5ff;
+  --geekblue-light-2: #d6e4ff;
+  --geekblue-light-3: #adc6ff;
+  --geekblue-light-4: #85a5ff;
+  --geekblue-light-5: #597ef7;
+  --geekblue-light-6: #2f54eb;
+  --geekblue-light-7: #1d39c4;
+  --geekblue-light-8: #10239e;
+  --geekblue-light-9: #061178;
+  --geekblue-light-10: #030852;
+  --light-blue-1: #e6f7ff;
+  --light-blue-2: #bae7ff;
+  --light-blue-3: #91d5ff;
+  --light-blue-4: #69c0ff;
+  --light-blue-5: #40a9ff;
+  --light-blue-6: #1890ff;
+  --light-blue-7: #096dd9;
+  --light-blue-8: #0050b3;
+  --light-blue-9: #003a8c;
+  --light-blue-10: #002766;
+  --light-green-6: #52c41a;
+  --light-gold-6: #faad14;
+  --light-red-5: #ff4d4f;
+  //DARK
+  --geekblue-dark-1: #131629;
+  --geekblue-dark-2: #161d40;
+  --geekblue-dark-3: #1c2755;
+  --geekblue-dark-4: #203175;
+  --geekblue-dark-5: #263ea0;
+  --geekblue-dark-6: #2b4acb;
+  --geekblue-dark-7: #5273e0;
+  --geekblue-dark-8: #7f9ef3;
+  --geekblue-dark-9: #a8c1f8;
+  --geekblue-dark-10: #d2e0fa;
+  --dark-blue-1: #111d2c;
+  --dark-blue-2: #112a45;
+  --dark-blue-3: #15395b;
+  --dark-blue-4: #164c7e;
+  --dark-blue-5: #1765ad;
+  --dark-blue-6: #177ddc;
+  --dark-blue-7: #3c9ae8;
+  --dark-blue-8: #65b7f3;
+  --dark-blue-9: #8dcff8;
+  --dark-blue-10: #b7e3fa;
+  --dark-green-6: #49aa19;
+  --dark-gold-6: #d89614;
+  --dark-red-5: #a61d24;
+  // **Палитра серых цветов:**
+  // Светлые серые
+  --gray-1: #ffffff;
+  --gray-2: #f7f7f7;
+  --gray-3: #e6e6e6;
+  --gray-4: #d6d6d6;
+  --gray-5: #c6c6c6;
+  // Средние серые
+  --gray-6: #b6b6b6;
+  --gray-7: #a6a6a6;
+  --gray-8: #969696;
+  --gray-9: #868686;
+  // Темные серые
+  --gray-10: #767676;
+  --gray-11: #666666;
+  --gray-12: #565656;
+  --gray-13: #464646;
+  --gray-14: #363636;
+  --title-light-85: #262626;
+  --title-dark-85: #dbdbdb;
+  --primary-text-light-85: #262626;
+  --primary-text-dark-85: #dbdbdb;
+  --secondary-text-light-45: #8c8c8c;
+  --secondary-text-dark-45: #7c7c7c;
+  --disable-light-25: #bfbfbf;
+  --disable-dark-30: #5a5a5a;
+  --border-light-15: #d9d9d9;
+  --border-dark-20: #434343;
+  --dividers-light-6: #434343;
+  --dividers-dark-12: #303030;
+  --background-light-4: #f5f5f5;
+  --background-dark-8: #262626;
+  --table-header-light-2: #fafafa;
+  --table-header-dark-4: #1c1c1c;
+  --link-light: var(--light-blue-6);
+  --link-dark: var(--dark-blue-6);
+  --success-light: var(--light-green-6);
+  --success-dark: var(--dark-green-6);
+  --warning-light: var(--light-gold-6);
+  --warning-dark: var(--dark-gold-6);
+  --error-light: var(--light-red-5);
+  --error-dark: var(--dark-red-5);
 }

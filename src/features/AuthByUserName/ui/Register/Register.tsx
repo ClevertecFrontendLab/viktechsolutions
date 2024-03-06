@@ -1,8 +1,8 @@
-import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
+import { EyeInvisibleOutlined, EyeOutlined, GooglePlusOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
 import { useSelector } from 'react-redux';
 
-import { getLoginState } from '../../model/selectors/getLoginState.ts';
+import { getLoginStateIsLoading } from '../../model/selectors/getLoginStateIsLoading.ts';
 import { LoginSchemaForm } from '../LoginForm.tsx';
 
 interface RegisterProps {
@@ -17,7 +17,7 @@ interface RegisterProps {
 
 export const Register = (props: RegisterProps) => {
   const { onFinish, onFinishFailed, error, errorEmail, errorPassword } = props;
-  const { isLoading } = useSelector(getLoginState);
+  const isLoading = useSelector(getLoginStateIsLoading);
 
   return (
     <Form
@@ -101,11 +101,11 @@ export const Register = (props: RegisterProps) => {
           style={{ backgroundColor: 'var(--geekblue-light-6' }}
           disabled={isLoading}>Войти</Button>
       </Form.Item>
-      {/*<Form.Item className="ggl">*/}
-      {/*  <Button type="default">*/}
-      {/*    <GooglePlusOutlined/> Войти через Google*/}
-      {/*  </Button>*/}
-      {/*</Form.Item>*/}
+      <Form.Item className="ggl">
+        <Button type="default">
+          <GooglePlusOutlined/> Регистрация через Google
+        </Button>
+      </Form.Item>
     </Form>
   );
 };

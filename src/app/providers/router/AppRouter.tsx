@@ -1,12 +1,14 @@
-import { ErrorPage, MainPage } from '@pages/index.ts';
-import ResultPage from '@pages/ResultPage/ResultPage.tsx';
 import { Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
+
+import { ErrorPage, MainPage } from '@pages/index.ts';
+import ResultPage from '@pages/ResultPage/ResultPage.tsx';
 
 import { LoginFormAsync } from '../../../features/AuthByUserName';
 import ProtectedRoute from '../../../features/ProtectedRoute/ProtectedRoute.tsx';
 import { ChangePassword } from '../../../features/Result/ChangePassword/ChangePassword.tsx';
 import { ConfirmEmail } from '../../../features/Result/ConfirmEmail/ConfirmEmail.tsx';
+import { Reviews } from '../../../features/Reviews/index.ts';
 import Spinner from '../../../shared/ui/Spinner/Spinner.tsx';
 
 type AppRouterProps = {
@@ -30,10 +32,13 @@ const AppRouter = ({ className }: AppRouterProps) => {
             <Route
               index
               element={<MainPage/>}/>
+            <Route
+              path="feedbacks"
+              element={<Reviews/>}/>
           </Route>
           <Route
-            path="auth/login"
-            element={<LoginFormAsync/>}/>
+            path="auth"
+            element={<LoginFormAsync tab="login"/>}/>
           <Route
             path="auth/registration"
             element={<LoginFormAsync

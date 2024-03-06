@@ -1,15 +1,21 @@
 import { Layout, Tabs } from 'antd';
-import { useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import LogoLoginForm from '../../../shared/assets/images/logoLoginForm.png';
-import { getLoginState } from '../model/selectors/getLoginState.ts';
-import { getRegisterState } from '../model/selectors/getRegisterState.ts';
+import {
+  DynamicModuleLoader,
+  ReducersList,
+} from '../../../shared/components/DynamicModuleLoader/DynamicModuleLoader.tsx';
+import Spinner from '../../../shared/ui/Spinner/Spinner.tsx';
+import { getLoginStateError } from '../model/selectors/getLoginStateError.ts';
+import { getLoginStateIsLoading } from '../model/selectors/getLoginStateIsLoading.ts';
+import { getRegisterStateError } from '../model/selectors/getRegisterStateError.ts';
 import { loginByEmail } from '../model/services/loginByEmail.ts';
 import { registerByEmail } from '../model/services/registerByEmail.ts';
-import { loginActions } from '../model/slice/loginSlice.ts';
-import { registerActions } from '../model/slice/registerSlice.ts';
+import { loginActions, loginReducer } from '../model/slice/loginSlice.ts';
+import { registerActions, registerReducer } from '../model/slice/registerSlice.ts';
 
 import { Login } from './Login/Login.tsx';
 
@@ -26,14 +32,20 @@ export type LoginSchemaForm = {
     remember?: boolean;
 }
 
-const LoginForm = ({ tab }: TabType) => {
+const initialReducer: ReducersList = {
+  loginForm: loginReducer,
+  registerForm: registerReducer,
+};
+
+const LoginForm = memo(({ tab }: TabType) => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState<string>('1');
   const [errorEmail, setErrorEmail] = useState('');
   const [errorPassword, setErrorPassword] = useState('');
   const dispatch = useDispatch();
-  const { error, isLoading } = useSelector(getLoginState);
-  const { errorRegister } = useSelector(getRegisterState);
+  const error = useSelector(getLoginStateError);
+  const isLoading = useSelector(getLoginStateIsLoading);
+  const errorRegister = useSelector(getRegisterStateError);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,7 +62,6 @@ const LoginForm = ({ tab }: TabType) => {
     dispatch(loginActions.setPassword(value.password ?? ''));
 
     try {
-      dispatch(loginActions.setIsLoading(true));
       await dispatch(loginByEmail(value)).unwrap();
 
       navigate('/main');
@@ -121,7 +132,7 @@ const LoginForm = ({ tab }: TabType) => {
     if (key === '2') {
       navigate('/auth/registration');
     } else {
-      navigate('/auth/login');
+      navigate('/auth');
     }
   };
 
@@ -153,30 +164,35 @@ const LoginForm = ({ tab }: TabType) => {
   ];
 
   return (
-    <div className="login-form">
-      <div className="login-form__blur">
-        {/*{isLoading ? <Spinner data-test-id="loader"/> :*/}
-
-        <Layout className="login-form__form">
-          <div className="logo">
-            <img
-              src={LogoLoginForm}
-              alt="logo"/>
-          </div>
-          <Tabs
-            onChange={handleTabChange}
-            activeKey={activeTab}
-            defaultActiveKey="1"
-            centered
-            items={tabItems}
-            className="login-form__tabs"
-            style={{ width: '100%' }}/>
-        </Layout>
-        {/*}*/}
+    <DynamicModuleLoader
+      name="login/register"
+      reducers={initialReducer}
+      removeAfterUnmount={false}
+    >
+      <div className="login-form">
+        <div className="login-form__blur">
+          {isLoading ? <Spinner data-test-id="loader"/> :
+            <Layout className="login-form__form">
+              <div className="logo">
+                <img
+                  src={LogoLoginForm}
+                  alt="logo"/>
+              </div>
+              <Tabs
+                onChange={handleTabChange}
+                activeKey={activeTab}
+                defaultActiveKey="1"
+                centered
+                items={tabItems}
+                className="login-form__tabs"
+                style={{ width: '100%' }}/>
+            </Layout>
+          }
+        </div>
       </div>
-    </div>
+    </DynamicModuleLoader>
   );
-};
+});
 
 LoginForm.displayName = 'LoginForm';
 

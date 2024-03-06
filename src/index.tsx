@@ -1,4 +1,5 @@
 import { StoreProvider } from '@redux/index';
+
 import 'antd/dist/antd.css';
 import { createBrowserHistory } from 'history';
 

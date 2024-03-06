@@ -1,7 +1,14 @@
 import { AndroidFilled, AppleFilled } from '@ant-design/icons';
 import { Button, Card, Divider } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
+import { ModalErrorReview } from '../../features/Reviews';
+import {
+  getSeeReviewsIsLoading,
+} from '../../features/Reviews/model/selectors/getSeeReviewsIsLoading.ts';
+import { USER_LOCALSTORAGE_KEY } from '../../shared/const/localstorage.ts';
 import Spinner from '../../shared/ui/Spinner/Spinner.tsx';
 import { Calendar } from '../../widgets/Icons/Calendar';
 import { Heart } from '../../widgets/Icons/Heart';
@@ -10,19 +17,30 @@ import { ProfileIcon } from '../../widgets/Icons/ProfileIcon';
 import './main-page.css';
 
 const MainPage: React.FC = () => {
-
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const token = localStorage.getItem(USER_LOCALSTORAGE_KEY) || sessionStorage.getItem(USER_LOCALSTORAGE_KEY);
+
+  const [open, setOpen] = useState(false);
+  const isLoadingReview = useSelector(getSeeReviewsIsLoading);
 
   useEffect(() => {
-    // Предполагается, что здесь происходит загрузка данных
+    sessionStorage.setItem('isAuthenticating', 'false');
     setIsLoading(true);
-    // Имитация загрузки данных
     setTimeout(() => {
       setIsLoading(false);
-    }, 500); // предположим, что данные загружаются за 2 секунды
+    }, 500);
   }, []);
 
-  if (isLoading) {
+  const handleGetReview = useCallback(
+    async () => {
+      navigate('/main/feedbacks');
+
+    }, [navigate],
+  );
+
+  if (isLoading || isLoadingReview) {
     return <Spinner data-test-id="loader"/>;
   }
 
@@ -75,8 +93,11 @@ const MainPage: React.FC = () => {
           style={{ border: 'none' }}>
           <div className="textBtn">
             <Button
+              data-test-id="see-reviews"
               type="text"
-              className="btn">Смотреть отзывы</Button>
+              className="btn"
+              onClick={handleGetReview}
+            >Смотреть отзывы</Button>
           </div>
           <div className="textBtns">
             <Card className="card-bottom-text">
@@ -97,6 +118,9 @@ const MainPage: React.FC = () => {
           </div>
         </Card>
       </div>
+      <ModalErrorReview
+        setOpen={setOpen}
+        open={open}/>
     </div>
   );
 };

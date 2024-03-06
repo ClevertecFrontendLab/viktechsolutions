@@ -1,0 +1,52 @@
+.modal {
+  backdrop-filter: blur(5px);
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    img {
+      display: block;
+      margin: 51px auto 0;
+    }
+
+    h3 {
+      margin: 20px auto 0;
+
+      font: var(--font-h3);
+      font-weight: 500;
+    }
+
+    p {
+      margin: 0 auto;
+
+      font: var(--font-14);
+      color: var(--secondary-text-light-45);
+    }
+
+    button {
+      width: 74px;
+      height: 40px;
+      margin: 24px auto 32px;
+
+      background: var(--geekblue-light-6);
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .modal {
+    .box {
+      img {
+        margin: 42px auto 0;
+      }
+
+      p {
+        max-width: 60%;
+      }
+    }
+  }
+}
